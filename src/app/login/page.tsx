@@ -8,12 +8,10 @@ import Link from "next/link"
 export default function LoginPage() {
   const router = useRouter()
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setError("")
-    setLoading(true)
 
     const formData = new FormData(e.target)
 
@@ -22,8 +20,6 @@ export default function LoginPage() {
       email: formData.get("email"),
       password: formData.get("password"),
     })
-
-    setLoading(false)
 
     if (res?.error) {
       setError("Credenciales incorrectas")
@@ -34,62 +30,50 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-yellow-400 px-6">
-
-      <div className="w-full max-w-md bg-blue-600 rounded-3xl p-10 text-white shadow-2xl">
-
-        <h1 className="text-4xl font-extrabold text-center mb-4 text-black">
-          VERSION NUEVA 2026
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black px-6">
+      
+      <div className="w-full max-w-md bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl rounded-3xl p-10 text-white">
+        
+        <h1 className="text-4xl font-extrabold text-center mb-2 tracking-wide">
+          NEW BODY
         </h1>
 
-        <p className="text-center text-white mb-8 text-sm">
-          Si ves esto, el deploy funciona
+        <p className="text-center text-gray-400 mb-8">
+          Inicia sesión y sigue tu progreso 💪
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
-          <div>
-            <label className="text-sm text-white">Correo electrónico</label>
-            <input
-              name="email"
-              type="email"
-              required
-              className="mt-2 w-full p-4 rounded-xl bg-white text-black border border-gray-300"
-            />
-          </div>
+          <input
+            name="email"
+            type="email"
+            placeholder="Correo electrónico"
+            className="w-full p-4 rounded-xl bg-white/10 border border-white/20 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+          />
 
-          <div>
-            <label className="text-sm text-white">Contraseña</label>
-            <input
-              name="password"
-              type="password"
-              required
-              className="mt-2 w-full p-4 rounded-xl bg-white text-black border border-gray-300"
-            />
-          </div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+            className="w-full p-4 rounded-xl bg-white/10 border border-white/20 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+          />
 
           {error && (
-            <p className="text-red-200 text-sm text-center">{error}</p>
+            <p className="text-red-500 text-sm">{error}</p>
           )}
 
-          <button
-            disabled={loading}
-            className="w-full bg-green-500 hover:bg-green-600 transition font-semibold p-4 rounded-xl disabled:opacity-60 text-black"
-          >
-            {loading ? "Ingresando..." : "Ingresar"}
+          <button className="w-full bg-red-600 hover:bg-red-700 transition font-semibold p-4 rounded-xl">
+            Ingresar
           </button>
 
         </form>
 
-        <div className="mt-8 text-center text-white text-sm">
-          ¿Nuevo usuario?{" "}
-          <Link
-            href="/register"
-            className="text-black font-bold underline"
-          >
+        <p className="text-sm text-center mt-8 text-gray-400">
+          ¿Nuevo en NEW BODY?{" "}
+          <Link href="/register" className="text-red-500 font-semibold hover:underline">
             Crear cuenta
           </Link>
-        </div>
+        </p>
 
       </div>
     </div>

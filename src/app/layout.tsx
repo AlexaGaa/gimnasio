@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Providers } from "@/components/Providers";
-import AccessibilityPanel from "@/components/AccessibilityPanel"
+import AccessibilityPanel from "@/components/AccessibilityPanel";
 
 export default function RootLayout({
   children,
@@ -10,8 +10,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <Providers>{children}</Providers>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
+
         <AccessibilityPanel />
       </body>
     </html>

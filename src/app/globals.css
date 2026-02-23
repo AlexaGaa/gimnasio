@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ALTO CONTRASTE */
+.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* ESCALA DE GRISES */
+.grayscale {
+  filter: grayscale(100%);
+}
+
+/* RESALTAR ENLACES */
+.highlight-links a {
+  text-decoration: underline !important;
+  color: #facc15 !important;
+  font-weight: bold;
+}
+
+/* ESPACIADO DE TEXTO */
+.text-spacing {
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
